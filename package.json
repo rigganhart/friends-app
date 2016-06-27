@@ -1,0 +1,21 @@
+{
+  "name": "friendsforever",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1"
+  },
+  "devDependencies": {
+    "gulp-sass": "^2.3.2",
+    "gulp-watch": "^4.3.8"
+  }
+}
