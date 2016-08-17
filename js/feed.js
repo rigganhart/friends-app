@@ -1,6 +1,6 @@
 module.exports = {
 
-    addFriend: function() {
+    addFriend: function(person) {
         let friends = document.getElementById('friends');
 
         let child = document.createElement('div');
@@ -37,6 +37,12 @@ module.exports = {
               console.log(`clicked on ${person.name.first} button`);
 
               addFriend(person);
+            });
+            var remove = newPerson.querySelector('button[name=delete]');
+            remove.addEventListener('click', function(){
+              console.log(`clicked on ${person.name.first} delete`);
+
+              // noFriend(person);
             });
             var parent = document.getElementById('list');
             parent.appendChild(newPerson);
