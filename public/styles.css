@@ -1,7 +1,8 @@
 body {
   background-image: linear-gradient(395deg, rgba(32, 32, 33, 0.14), black);
   background-repeat: no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  height: 100%; }
 
 body a {
   text-decoration: none;
@@ -42,7 +43,10 @@ section {
   height: 700px;
   background-color: grey;
   display: inline-block;
-  overflow: scroll; }
+  overflow: scroll;
+  border: 2px solid;
+  padding: 2%;
+  box-shadow: 6px 6px 26px #474747; }
 
 #list {
   margin: 1%;
@@ -70,3 +74,6 @@ ul {
 .details {
   display: inline-block;
   width: 65%; }
+
+#hobbies {
+  height: 31em; }
