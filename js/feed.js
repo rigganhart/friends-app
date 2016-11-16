@@ -1,10 +1,11 @@
 module.exports = {
 
+    // appends the person object to the friend list element
     addFriend: function(person) {
         let friends = document.getElementById('friends');
 
         let child = document.createElement('div');
-            child.innerHTML = `
+        child.innerHTML = `
               <div class = "person">
                 <img src="${person.picture.medium}">
                 <div class = "details">
@@ -13,9 +14,10 @@ module.exports = {
               </div>
             `;
 
-            friends.appendChild(child);
+        friends.appendChild(child);
     },
 
+    // make an http request to the Randomuser API and creates an object called person
     getFriends: function() {
         let request = new XMLHttpRequest();
 
@@ -23,34 +25,44 @@ module.exports = {
             var person = JSON.parse(this.responseText)
             person = person.results[0];
             console.log(person);
-            var newPerson = document.createElement('ul');
+            var newPerson = document.createElement('li');
             newPerson.innerHTML = `
-                  <li>
+
                   <img src= '${person.picture.medium}'>
                   <h3>${person.name.first}</h3>
-                  <button name="add">And Friend</button>
-                  <button name="delete">No And Friend!!</button>
-                  </li>
+                  <button name="add">Add ${person.name.first}</button>
+                  <button name="delete">Not Interested</button>
+
             `;
             var add = newPerson.querySelector('button[name=add]');
-            add.addEventListener('click', function(){
-              console.log(`clicked on ${person.name.first} button`);
+            add.addEventListener('click', function() {
+                console.log(`clicked on ${person.name.first} button`);
 
-              addFriend(person);
+                addFriend(person);
             });
             var remove = newPerson.querySelector('button[name=delete]');
-            remove.addEventListener('click', function(){
-              console.log(`clicked on ${person.name.first} delete`);
+            remove.addEventListener('click', function() {
+                console.log(`clicked on ${person.name.first} delete`);
 
-              // noFriend(person);
+                // noFriend(person);
             });
+            newPerson.classList.add('person');
+
+              if (person.gender === "male") {
+                newPerson.classList.add('boy');
+              } else if (person.gender === "female") {
+                newPerson.classList.add('girl');
+              };
+
             var parent = document.getElementById('list');
             parent.appendChild(newPerson);
+
+// adds a friend to the friends list and allows to view an info page about each person
             function addFriend() {
                 let friends = document.getElementById('friends');
 
                 let child = document.createElement('div');
-                    child.innerHTML = `
+                child.innerHTML = `
                       <div class = "person">
                         <img src="${person.picture.medium}">
                         <div class = "details">
@@ -59,15 +71,15 @@ module.exports = {
                       </div>
                     `;
 
-                    friends.appendChild(child);
+                friends.appendChild(child);
 
-              var changeView = child.querySelector('a');
-              changeView.addEventListener('click', function(){
-                console.log(`clicked ${person.name.last} "a" tag`);
-                document.getElementById("feed").removeAttribute("class");
-                document.getElementById("details").setAttribute("class", "active");
-                var details = document.getElementById("details");
-                var personDeets =  document.createElement('div');
+                var changeView = child.querySelector('a');
+                changeView.addEventListener('click', function() {
+                    console.log(`clicked ${person.name.last} "a" tag`);
+                    document.getElementById("feed").removeAttribute("class");
+                    document.getElementById("details").setAttribute("class", "active");
+                    var details = document.getElementById("details");
+                    var personDeets = document.createElement('div');
                     personDeets.innerHTML = `
                     <div class = "about">
                     <img src="${person.picture.large}">
@@ -79,10 +91,10 @@ module.exports = {
                     <h2> Hobbies:</h2>
                     </div>
                     `;
-                    details.innerHTML="";
+                    details.innerHTML = "";
                     details.appendChild(personDeets);
-              });
-            }
+                });
+            } //end of add friend with details
 
 
         });
