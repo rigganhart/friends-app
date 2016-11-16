@@ -50,13 +50,11 @@ section {
 
 #list {
   margin: 1%;
-  width: 60%;
+  width: 50%;
   height: 800px;
   display: inline-block;
   float: right;
-  overflow: scroll; }
-
-ul {
+  overflow: scroll;
   list-style: none; }
 
 .footer {
@@ -77,3 +75,14 @@ ul {
 
 #hobbies {
   height: 31em; }
+
+.person {
+  margin: 1%;
+  background-color: white;
+  border-radius: 5px; }
+
+.boy {
+  background-color: blue; }
+
+.girl {
+  background-color: pink; }
